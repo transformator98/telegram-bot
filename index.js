@@ -30,7 +30,6 @@ const start = () => {
 
         if (text === '/start') {
             await bot.sendSticker(chatId, sticker)
-            await bot.sendSticker(chatId, sticker)
             bot.sendMessage(chatId, `Радий вітати ${msg.from.first_name} ${msg.from?.last_name || ''} в телеграм боті Polovynka Team.`)
             return
         }
