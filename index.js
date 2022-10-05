@@ -2,7 +2,10 @@ require('dotenv').config()
 const TelegramApi = require('node-telegram-bot-api')
 const { againOptions, gameOptions } = require('./options')
 const apiKey = process.env.API_KEY
-const sticker = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/1.webp'
+const stickerHello = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/1.webp'
+const stickerFail = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/192/47.webp'
+const stickerTrue = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/192/52.webp'
+const stickerInfo = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/192/49.webp'
 const bot = new TelegramApi(apiKey, { polling: true })
 
 const chats = {}
@@ -20,7 +23,6 @@ const start = () => {
         { command: '/start', description: 'Привітання!' },
         { command: '/info', description: 'Інформація' },
         { command: '/game', description: 'Тупо пограти коли нефіг делать' },
-        { command: '/again', description: 'Спробувати ще' },
     ])
 
     bot.on('message', async msg => {
@@ -29,12 +31,13 @@ const start = () => {
         const chatId = msg.chat.id;
 
         if (text === '/start') {
-            await bot.sendSticker(chatId, sticker)
+            await bot.sendSticker(chatId, stickerHello)
             bot.sendMessage(chatId, `Радий вітати ${msg.from.first_name} ${msg.from?.last_name || ''} в телеграм боті Polovynka Team.`)
             return
         }
         if (text === '/info') {
-            await bot.sendMessage(chatId, `Loadin info ....`)
+            await bot.sendSticker(chatId, stickerInfo)
+                // await bot.sendMessage(chatId, `Loadin info ....`)
             return
         }
         if (text === '/game') {
@@ -43,15 +46,17 @@ const start = () => {
         return bot.sendMessage(chatId, `Я тебе не розумію або такої команди не знайдено, спробуй ще.`)
     })
 
-    bot.on('callback_query', msg => {
+    bot.on('callback_query', async msg => {
         const data = msg.data;
         const chatId = msg.message.chat.id;
         if (data === '/again') {
             return startGame(chatId)
         }
-        if (data === chats[chatId]) {
+        if (Number(data) === chats[chatId]) {
+            await bot.sendSticker(chatId, stickerTrue)
             return bot.sendMessage(chatId, `Вітаю, ти вгадав цифру ${chats[chatId]}`, againOptions)
         } else {
+            await bot.sendSticker(chatId, stickerFail)
             return bot.sendMessage(chatId, `На жаль ти не вгадав, загадане число ${chats[chatId]}`, againOptions)
         }
 
