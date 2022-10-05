@@ -20,7 +20,7 @@ const start = () => {
         { command: '/start', description: 'Привітання!' },
         { command: '/info', description: 'Інформація' },
         { command: '/game', description: 'Тупо пограти коли нефіг делать' },
-        { command: '/again', description: 'Тупо пограти коли нефіг делать' },
+        { command: '/again', description: 'Спробувати ще' },
     ])
 
     bot.on('message', async msg => {
