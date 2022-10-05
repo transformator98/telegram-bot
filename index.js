@@ -11,7 +11,7 @@ const stickerInfo = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e
 const bot = new TelegramApi(apiKey, { polling: true })
 const PORT = proces.env.PORT || 80
 app.listen(PORT, () => {
-    console.log('%cindex.js line:14 Server Run', 'color: #007acc;', Server Run);
+    console.log('%cindex.js line:14 Server Run', 'color: #007acc;');
 })
 
 const chats = {}
