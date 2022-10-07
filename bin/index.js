@@ -33,7 +33,7 @@ const start = () => {
 
         if (text === '/start') {
             await bot.sendSticker(chatId, stickerHello)
-            bot.sendMessage(chatId, `Радий вітати ${msg.from.first_name} ${msg.from?.last_name || ''} в телеграм боті Polovynka Team.`)
+            bot.sendMessage(chatId, `Радий вітати ${msg.from.first_name} ${msg.from.last_name || ''} в телеграм боті Polovynka Team.`)
             return
         }
         if (text === '/info') {
