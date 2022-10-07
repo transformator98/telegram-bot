@@ -1,18 +1,19 @@
-const express = require('express')
-const app = express()
 require('dotenv').config()
+const app = require('../app')
 const TelegramApi = require('node-telegram-bot-api')
-const { againOptions, gameOptions } = require('./options')
+const { againOptions, gameOptions } = require('../options')
 const apiKey = process.env.API_KEY
 const stickerHello = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/1.webp'
 const stickerFail = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/192/47.webp'
 const stickerTrue = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/192/52.webp'
 const stickerInfo = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/192/49.webp'
 const bot = new TelegramApi(apiKey, { polling: true })
-const PORT = process.env.PORT || 80
+const PORT = process.env.PORT || 3000
+
 app.listen(PORT, () => {
-    console.log('%cindex.js line:14 Server Run', 'color: #007acc;');
+    console.log('Server Run');
 })
+
 
 const chats = {}
 
