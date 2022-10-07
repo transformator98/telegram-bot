@@ -8,6 +8,8 @@ const stickerTrue = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e
 const stickerInfo = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/192/49.webp'
 const bot = new TelegramApi(apiKey, { polling: true })
 
+console.log('apikey', apikey)
+
 const chats = {}
 
 
