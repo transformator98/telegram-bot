@@ -1,14 +1,13 @@
 require('dotenv').config()
 const TelegramApi = require('node-telegram-bot-api')
 const { againOptions, gameOptions } = require('../options')
-const apiKey = process.env.API_KEY
+const apiKey = '5461225893:AAEWJ9qYxSGpndlCf1ey1fiSEJBvQqaPRE4'
+    // const apiKey = process.env.API_KEY
 const stickerHello = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/1.webp'
 const stickerFail = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/192/47.webp'
 const stickerTrue = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/192/52.webp'
 const stickerInfo = 'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/192/49.webp'
 const bot = new TelegramApi(apiKey, { polling: true })
-
-console.log('apikey', apikey)
 
 const chats = {}
 
