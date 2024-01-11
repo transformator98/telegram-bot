@@ -2,7 +2,7 @@ require('dotenv').config();
 const TelegramApi = require('node-telegram-bot-api');
 const { againOptions, gameOptions } = require('../options');
 // const weather = require('../weather')
-const { API_TELEGRAM_TOKEN } = process.env.API_TELEGRAM_TOKEN as any;
+const API_TELEGRAM_TOKEN = process.env.API_TELEGRAM_TOKEN;
 const stickerHello =
   'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/1.webp';
 const stickerFail =
