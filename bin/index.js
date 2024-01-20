@@ -2,6 +2,7 @@ require('dotenv').config();
 const TelegramApi = require('node-telegram-bot-api');
 const { againOptions, gameOptions } = require('../options');
 // const weather = require('../weather')
+const sequelize = require('../db');
 const API_TELEGRAM_TOKEN = process.env.API_TELEGRAM_TOKEN;
 const stickerHello =
   'https://tlgrm.ru/_/stickers/c22/4c9/c224c9aa-b175-3f4b-b46e-6142170015c6/1.webp';
@@ -27,8 +28,16 @@ const startGame = async (chatId) => {
   return;
 };
 
-const start = () => {
+const start = async () => {
   // weather()
+
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+    // await sequelize.sync();
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
   bot.setMyCommands([
     { command: '/start', description: 'Привітання!' },
     { command: '/info', description: 'Інформація' },
